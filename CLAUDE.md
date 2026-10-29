@@ -42,8 +42,8 @@ No leas `recursos/` entero: son piezas de terceros (Thingiverse) que sirven de r
 ## Entorno
 
 - Windows 11, PowerShell y Git Bash. Python vía pyenv (`python`).
-- Herramienta CAD: **sin decidir** (BACKLOG, alta). Hasta entonces no hay suite ni comprobación de «no cambió».
-- Fabricación prevista: impresión 3D y/o perfil de aluminio 2020 (se define en `docs/CONTEXT.md`, fase 3).
+- CAD: **build123d** (Python). Aún sin instalar; la suite y la comprobación de «no cambió» están pendientes (BACKLOG B2).
+- Fabricación: perfil de aluminio 2020 + piezas impresas en Bambu Lab (PLA, después PETG). Detalle en `docs/CONTEXT.md`.
 
 ## Cómo reportar
 

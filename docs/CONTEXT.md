@@ -2,7 +2,7 @@
 
 Requisitos, interfaces, parámetros maestros, entorno y manufactura de la pieza base. Se rellena con la entrevista de definición (fases 1–3) y se consolida en la fase 4. Lo que aquí se fija lo leen todas las piezas (P4).
 
-Estado: **fases 1 y 2 cerradas**; fase 3 pendiente.
+Estado: **fases 1, 2 y 3 cerradas**; falta la consolidación (fase 4).
 
 ## 1. Propósito e integración
 
@@ -82,4 +82,35 @@ Valores iniciales; los de holgura se validan con una probeta de tolerancias ante
 
 ## 3. Entorno y restricciones
 
-*Pendiente (fase 3 de la entrevista).*
+### Montaje
+
+| Id | Decisión | Consecuencia de diseño |
+| --- | --- | --- |
+| E1 | La barra cruza la caja **de borde a borde** y se pinza a dos bordes opuestos (≈ 4.5 mm). | Viga con dos apoyos, no en voladizo. Las pinzas no pueden depender de la holgura del borde: ajuste por tornillo, no por presión del PLA. |
+| E2 | Cámaras **por dentro**, colgando, mirando a Marker0. | Cuña y carcasa cuelgan bajo la viga; el cable sube por la barra. |
+| E3 | **Perfil de aluminio 2020** + piezas impresas (carros, cuñas, carcasas, pinzas). | La rigidez la da el aluminio; lo impreso son juntas cortas y gruesas. Marcas cada 25 mm en una regleta o en el carro. |
+| E4 | CAD en **build123d** (Python). | Parámetros maestros en un solo módulo; exporta STEP/STL/3MF; cotas de interfaz verificables con pruebas (B2). |
+
+### Entorno
+
+- **Temperatura:** laboratorio, 20–30 °C; los LED de la caja no calientan el techo. El PLA es válido térmicamente.
+- **Manipulación: se transporta.** Golpes y vibración. Consecuencias:
+  - Ninguna posición se sostiene solo por fricción: separación y ángulo se fijan con pasador o forma (P7).
+  - El alivio de tensión del cable es obligatorio (R6): un tirón en el transporte no llega a la cámara.
+  - Tras cada transporte se comprueba el giro relativo (abajo) antes de usar la calibración.
+  - El PLA es frágil a impacto: las piezas portantes se dimensionan sin esquinas vivas y con `wall_struct`; si una pieza se rompe o cede, se adelanta la migración a PETG.
+- **Procesamiento:** fuera del alcance de la pieza. Las cámaras son USB/MJPEG; el software de navegación decide resolución y latencia.
+
+### Manufactura
+
+- Piezas impresas en Bambu Lab (cama de ≈ 256 mm): toda pieza impresa cabe en la cama; el perfil 2020 no se imprime.
+- Orientación de impresión elegida para que las cargas no separen capas en pasadores, pinzas y nervios.
+- Roscas: tuercas metálicas insertadas (1/4-20, M5, M3), nunca roscas impresas portantes.
+- Compra: perfil 2020 de ≈ 440 mm (cruza los 400 mm con margen para las pinzas) y tuercas en T M5 deslizantes (B8).
+
+### Verificación de rigidez (P3, P6)
+
+| Cuándo | Método | Criterio |
+| --- | --- | --- |
+| Día a día y tras transporte | Pose de Marker0 vista por ambas cámaras; se calcula la pose relativa cámara–cámara antes y después de perturbar (tocar la barra, tirar del cable, mover la barra entera). | Δ ángulo relativo < 0.05° (objetivo 0.02°). |
+| Al cerrar cada versión de la estructura | Calibración estéreo completa con tablero, antes y después de las mismas perturbaciones. | Δ rotación extrínseca < 0.05°; Δ traslación < 0.3 mm. |

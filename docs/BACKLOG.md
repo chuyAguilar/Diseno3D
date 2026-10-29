@@ -6,30 +6,22 @@ Lo que falta. Prioridad **alta**: puede dar un resultado equivocado o impide ava
 
 | Id | Qué | Prioridad |
 | --- | --- | --- |
-| B1 | Elegir la herramienta CAD | Alta |
 | B2 | Definir la comprobación de «no cambió» | Alta |
 | B3 | FOV de 85°: ¿diagonal u horizontal? | Media |
 | B4 | Medir la carcasa real y la salida del cable USB | Media |
 | B5 | Formato del archivo de configuración por código | Baja |
 | B6 | Índice de cada cámara en el software de navegación | Alta |
 | B7 | Probeta de tolerancias en la Bambu Lab con PLA | Alta |
+| B8 | Comprar perfil 2020 (~440 mm) y tuercas en T M5 | Alta |
 
 ## Abiertos
-
-### B1 · Elegir la herramienta CAD
-
-- **Qué:** decidir con qué se modelan las piezas (CadQuery/build123d, OpenSCAD, FreeCAD, Fusion 360).
-- **Por qué queda:** el autor aún no lo sabe; se decide en la fase 3 de la entrevista.
-- **De dónde:** paso 0 de `iniciar-proyecto`, 2026-10-29.
-- **Qué haría falta:** conocer el método de manufactura y si los parámetros deben vivir en código (P4).
-- **Prioridad:** alta — sin ella no hay suite ni fuente única de parámetros.
 
 ### B2 · Definir la comprobación de «no cambió»
 
 - **Qué:** la prueba que dice que un cambio no alteró lo que ya funcionaba (p. ej. cotas de interfaz y volumen del modelo exportado idénticos).
-- **Por qué queda:** depende de B1.
+- **Por qué queda:** la herramienta ya está elegida (build123d); falta el entorno y la primera pieza.
 - **De dónde:** paso 0 de `iniciar-proyecto`, 2026-10-29.
-- **Qué haría falta:** B1 resuelto.
+- **Qué haría falta:** instalar build123d y pytest; pruebas que comparen cotas de interfaz, caja envolvente y volumen de cada pieza con valores guardados.
 - **Prioridad:** alta.
 
 ### B3 · FOV de 85°: ¿diagonal u horizontal?
@@ -72,6 +64,16 @@ Lo que falta. Prioridad **alta**: puede dar un resultado equivocado o impide ava
 - **Qué haría falta:** B1 resuelto; medir con calibre.
 - **Prioridad:** alta — antes de la primera pieza funcional.
 
+### B8 · Comprar perfil 2020 y tuercas en T M5
+
+- **Qué:** un tramo de perfil 2020 de ≈ 440 mm y tuercas en T M5 deslizantes (al menos 8).
+- **Por qué queda:** el autor no los tiene.
+- **De dónde:** entrevista, fase 3, 2026-10-29.
+- **Qué haría falta:** confirmar la longitud exacta cuando esté diseñada la pinza de borde.
+- **Prioridad:** alta — la estructura depende de él.
+
 ## Cerrados
 
-*Ninguno todavía.*
+### B1 · Elegir la herramienta CAD
+
+- **Cerrado el 2026-10-29:** build123d (Python), decidido por el autor en la fase 3 de la entrevista (`docs/CONTEXT.md`, E4).
