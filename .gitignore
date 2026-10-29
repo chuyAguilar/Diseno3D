@@ -1,0 +1,16 @@
+# Salidas de Claude
+Claude outputs/
+
+# Temporales de CAD y slicer
+*.gcode
+*.bgcode
+*.3mf.bak
+*.FCStd1
+*.FCBak
+__pycache__/
+.ipynb_checkpoints/
+
+# Sistema
+Thumbs.db
+desktop.ini
+.DS_Store
