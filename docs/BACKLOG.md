@@ -12,7 +12,7 @@ Lo que falta. Prioridad **alta**: puede dar un resultado equivocado o impide ava
 | B5 | Formato del archivo de configuración por código | Baja |
 | B6 | Índice de cada cámara en el software de navegación | Alta |
 | B7 | Probeta de tolerancias en la Bambu Lab con PLA | Alta |
-| B8 | Comprar perfil 2020 (~440 mm) y tuercas en T M5 | Alta |
+| B8 | Comprar los materiales de `docs/COMPRAS.md` | Alta |
 
 ## Abiertos
 
@@ -64,9 +64,9 @@ Lo que falta. Prioridad **alta**: puede dar un resultado equivocado o impide ava
 - **Qué haría falta:** B1 resuelto; medir con calibre.
 - **Prioridad:** alta — antes de la primera pieza funcional.
 
-### B8 · Comprar perfil 2020 y tuercas en T M5
+### B8 · Comprar los materiales
 
-- **Qué:** un tramo de perfil 2020 de ≈ 440 mm y tuercas en T M5 deslizantes (al menos 8).
+- **Qué:** lo que lista `docs/COMPRAS.md` (perfil 2020, tuercas en T M5, tornillería, pasadores, PETG…). Se pide capital a la empresa con `presentacion/barra-estereo.html`.
 - **Por qué queda:** el autor no los tiene.
 - **De dónde:** entrevista, fase 3, 2026-10-29.
 - **Qué haría falta:** confirmar la longitud exacta cuando esté diseñada la pinza de borde.

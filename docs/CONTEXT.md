@@ -106,7 +106,7 @@ Valores iniciales; los de holgura se validan con una probeta de tolerancias ante
 - Piezas impresas en Bambu Lab (cama de ≈ 256 mm): toda pieza impresa cabe en la cama; el perfil 2020 no se imprime.
 - Orientación de impresión elegida para que las cargas no separen capas en pasadores, pinzas y nervios.
 - Roscas: tuercas metálicas insertadas (1/4-20, M5, M3), nunca roscas impresas portantes.
-- Compra: perfil 2020 de ≈ 440 mm (cruza los 400 mm con margen para las pinzas) y tuercas en T M5 deslizantes (B8).
+- Compras: lista completa en `docs/COMPRAS.md` (B8). El perfil se corta a ≈ 440 mm para cruzar los 400 mm con margen para las pinzas.
 
 ### Verificación de rigidez (P3, P6)
 
