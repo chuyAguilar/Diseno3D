@@ -60,7 +60,8 @@ CAM_BEHIND_BOARD = 20.4  # fondo libre detrás de la placa (conector USB y compo
 CABLE_SLOT = (12.0, 8.0) # salida del cable en la pared +Y: ancho × alto
 
 SIN_MEDIR = ("CASE_REF_OUTER", "CASE_REF_DEPTH", "CASE_REF_WALL", "CASE_REF_CAVITY",
-             "CAM_BOARD", "LENS_HOLE_D", "BOARD_T", "LENS_BARREL_D", "CAM_BEHIND_BOARD", "CABLE_SLOT")
+             "CAM_BOARD", "LENS_HOLE_D", "BOARD_T", "LENS_BARREL_D", "CAM_BEHIND_BOARD", "CABLE_SLOT",
+             "CABLE_D")
 
 # --- Carcasa nueva BE-CARCASA (D2). Mira hacia -Z; la cara trasera de montaje está en z = 0 ---
 CASE_WALL = WALL_MIN
@@ -83,6 +84,31 @@ BOLT_14_20_HEAD_D = 9.5
 BOLT_14_20_HEAD_H = 6.35
 M3_NUT_FLATS = 5.5
 M3_NUT_H = 2.4
+
+# --- Marco de la barra: el perfil va a lo largo de X, centrado en el origen; Z hacia arriba ---
+PROFILE_BOTTOM = -PROFILE_SIZE / 2
+
+# --- Carro BE-CARRO: bajo el perfil, con llave en la ranura inferior y 2 M5 a tuercas en T ---
+CARRO_SIZE = CASE_OUTER          # mismo apoyo que la cuña
+CARRO_T = 10.0
+KEY_H = 1.5                      # altura de la llave; menor que SLOT_LIP
+CARRO_M5_X = 12.0                # M5 en (±CARRO_M5_X, 0)
+M5_HEAD_D = 8.5
+M5_HEAD_H = 5.0
+
+# --- Pinza BE-PINZA-CAJA: muerde el borde superior de una pared lateral y sostiene el perfil ---
+PINZA_LEN = 30.0                 # a lo largo de la barra
+PINZA_CRADLE_WALL = 4.0
+PINZA_FLOOR = 5.0                # entre el borde de la caja y el perfil
+PINZA_JAW = 5.0
+PINZA_JAW_DEPTH = 25.0           # cuánto baja por la pared
+PINZA_CRADLE_UP = 6.0            # cuánto sube la cuna por los lados del perfil (desde su centro)
+
+# --- Clip de cable BE-CLIP-CABLE: cierre de cuarto de vuelta en la ranura superior ---
+CABLE_D = 4.5                    # SIN_MEDIR: diámetro del cable USB
+CLIP_TAB_L = 10.5                # entre SLOT_OPENING y SLOT_CHAMBER_W
+CLIP_TAB_T = 1.5
+CLIP_RING_WALL = 1.6
 
 # --- Cuña BE-CUNA (D3, D4). Cara superior en z = 0 contra el carro; la inferior, inclinada, contra la carcasa ---
 WEDGE_T0 = 11.0          # grosor en el canto fino: cabe la cabeza del 1/4-20 a 0°

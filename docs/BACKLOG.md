@@ -12,6 +12,7 @@ Lo que falta. Prioridad **alta**: puede dar un resultado equivocado o impide ava
 | B6 | Índice de cada cámara en el software de navegación | Alta |
 | B7 | Probeta de tolerancias en la Bambu Lab con PLA | Alta |
 | B8 | Comprar los materiales de `docs/COMPRAS.md` | Alta |
+| B9 | Regleta con muescas: fijar la separación por forma, no por apriete (P7) | Alta |
 
 ## Abiertos
 
@@ -62,6 +63,14 @@ Lo que falta. Prioridad **alta**: puede dar un resultado equivocado o impide ava
 - **De dónde:** entrevista, fase 3, 2026-10-29.
 - **Qué haría falta:** confirmar la longitud exacta cuando esté diseñada la pinza de borde.
 - **Prioridad:** alta — la estructura depende de él.
+
+### B9 · Regleta con muescas para la separación
+
+- **Qué:** una regleta impresa (en dos tramos, por la cama de 256 mm) fija en una ranura lateral del perfil, con muescas cada 25 mm, y un diente en el carro que entra en la muesca.
+- **Por qué queda:** en la v01 el carro se sujeta al perfil solo con 2 M5 a tuercas en T, es decir, por apriete; con golpes de transporte podría deslizarse, y eso choca con P7. Hoy solo hay un índice en V para leer la marca.
+- **De dónde:** spec 001, fase 3, 2026-10-29.
+- **Qué haría falta:** decidir qué ranura lateral queda libre (la -Y la usa la pinza en sus extremos) y añadir el diente al carro.
+- **Prioridad:** alta — sin ella, la separación no es repetible tras un golpe.
 
 ## Cerrados
 
