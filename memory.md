@@ -1,6 +1,6 @@
 # Memoria — estado de hoy
 
-Spec activo: ningún spec activo.
+Spec activo: `specs/001-barra-v01/` (plan pendiente de autorización).
 
 ## Dónde estamos (2026-10-29)
 
@@ -11,5 +11,6 @@ Spec activo: ningún spec activo.
 
 ## Lo siguiente
 
-1. Fase 4 de la entrevista: consolidar `docs/CONTEXT.md`.
-2. Comprar perfil y tuercas (B8); probeta de tolerancias (B7).
+1. Autorización del plan 001 (barra v01: modelo build123d, ensamble y vistas para pedir capital a la empresa).
+2. Fase 4 de la entrevista: consolidar `docs/CONTEXT.md`.
+3. Comprar los materiales (B8, `docs/COMPRAS.md`).

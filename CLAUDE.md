@@ -62,8 +62,6 @@ No leas `recursos/` entero: son piezas de terceros (Thingiverse) que sirven de r
 | `docs/ARCHITECTURE.md` | El qué (etapa 2) |
 | `docs/DECISIONS.md` | El porqué: ADR numerados (etapa 2) |
 | `docs/BACKLOG.md` | Lo que falta |
-| `docs/COMPRAS.md` | Lo que hay que comprar, con cantidades y precios de referencia |
-| `presentacion/` | Material para presentar el proyecto (no es diseño de fabricación) |
-| `docs/PRUEBAS.md` | Lo que se probó (etapa 2) |
+| `docs/COMPRAS.md` | Lo que hay que comprar, con cantidades y precios de referencia || `docs/PRUEBAS.md` | Lo que se probó (etapa 2) |
 | `specs/NNN-nombre/` | Una meta: `spec.md`, `plan.md`, `clarify.md`, `tasks.md` |
 | `recursos/` | Piezas de terceros de referencia; no se editan |

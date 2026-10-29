@@ -66,7 +66,7 @@ Lo que falta. Prioridad **alta**: puede dar un resultado equivocado o impide ava
 
 ### B8 · Comprar los materiales
 
-- **Qué:** lo que lista `docs/COMPRAS.md` (perfil 2020, tuercas en T M5, tornillería, pasadores, PETG…). Se pide capital a la empresa con `presentacion/barra-estereo.html`.
+- **Qué:** lo que lista `docs/COMPRAS.md` (perfil 2020, tuercas en T M5, tornillería, pasadores, PETG…). Se pide capital a la empresa mostrando el diseño de la barra.
 - **Por qué queda:** el autor no los tiene.
 - **De dónde:** entrevista, fase 3, 2026-10-29.
 - **Qué haría falta:** confirmar la longitud exacta cuando esté diseñada la pinza de borde.
