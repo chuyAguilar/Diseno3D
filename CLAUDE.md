@@ -42,7 +42,8 @@ No leas `recursos/` entero: son piezas de terceros (Thingiverse) que sirven de r
 ## Entorno
 
 - Windows 11, PowerShell y Git Bash. Python vía pyenv (`python`).
-- CAD: **build123d** (Python). Aún sin instalar; la suite y la comprobación de «no cambió» están pendientes (BACKLOG B2).
+- CAD: **build123d** en `.venv` (Python 3.12; `requirements.txt`). Parámetros solo en `cad/params.py`.
+- Suite y comprobación de «no cambió»: `.venv\Scripts\python.exe -m pytest -q` (≈ 7 s; tiempo límite 300 s). Las exportaciones van a `salidas/`, fuera de git.
 - Fabricación: perfil de aluminio 2020 + piezas impresas en Bambu Lab (PLA, después PETG). Detalle en `docs/CONTEXT.md`.
 
 ## Cómo reportar

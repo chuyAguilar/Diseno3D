@@ -1,6 +1,11 @@
 # Salidas de Claude
 Claude outputs/
 
+# Entorno y exportaciones (se regeneran con cad/)
+.venv/
+salidas/
+.pytest_cache/
+
 # Temporales de CAD y slicer
 *.gcode
 *.bgcode

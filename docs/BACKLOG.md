@@ -6,7 +6,6 @@ Lo que falta. Prioridad **alta**: puede dar un resultado equivocado o impide ava
 
 | Id | Qué | Prioridad |
 | --- | --- | --- |
-| B2 | Definir la comprobación de «no cambió» | Alta |
 | B3 | FOV de 85°: ¿diagonal u horizontal? | Media |
 | B4 | Medir la carcasa real y la salida del cable USB | Media |
 | B5 | Formato del archivo de configuración por código | Baja |
@@ -15,14 +14,6 @@ Lo que falta. Prioridad **alta**: puede dar un resultado equivocado o impide ava
 | B8 | Comprar los materiales de `docs/COMPRAS.md` | Alta |
 
 ## Abiertos
-
-### B2 · Definir la comprobación de «no cambió»
-
-- **Qué:** la prueba que dice que un cambio no alteró lo que ya funcionaba (p. ej. cotas de interfaz y volumen del modelo exportado idénticos).
-- **Por qué queda:** la herramienta ya está elegida (build123d); falta el entorno y la primera pieza.
-- **De dónde:** paso 0 de `iniciar-proyecto`, 2026-10-29.
-- **Qué haría falta:** instalar build123d y pytest; pruebas que comparen cotas de interfaz, caja envolvente y volumen de cada pieza con valores guardados.
-- **Prioridad:** alta.
 
 ### B3 · FOV de 85°: ¿diagonal u horizontal?
 
@@ -73,6 +64,10 @@ Lo que falta. Prioridad **alta**: puede dar un resultado equivocado o impide ava
 - **Prioridad:** alta — la estructura depende de él.
 
 ## Cerrados
+
+### B2 · Definir la comprobación de «no cambió»
+
+- **Cerrado el 2026-10-29:** `pytest` sobre `tests/`, que mide en el modelo las cotas de interfaz (no repite los parámetros). Spec 001, fase 1.
 
 ### B1 · Elegir la herramienta CAD
 
