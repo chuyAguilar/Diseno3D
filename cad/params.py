@@ -54,8 +54,40 @@ CAM_BOARD = 38.0
 LENS_HOLE_D = 14.6       # agujero del lente en la carcasa de referencia
 LENS_KEEPOUT = 1.5       # holgura radial mínima entre el lente y cualquier pieza (P5)
 
+BOARD_T = 1.6            # grosor de la placa de la cámara
+LENS_BARREL_D = 14.0     # diámetro exterior del portalente M12 (cabe en el agujero de 14.6)
+CAM_BEHIND_BOARD = 20.4  # fondo libre detrás de la placa (conector USB y componentes)
+CABLE_SLOT = (12.0, 8.0) # salida del cable en la pared +Y: ancho × alto
+
 SIN_MEDIR = ("CASE_REF_OUTER", "CASE_REF_DEPTH", "CASE_REF_WALL", "CASE_REF_CAVITY",
-             "CAM_BOARD", "LENS_HOLE_D")
+             "CAM_BOARD", "LENS_HOLE_D", "BOARD_T", "LENS_BARREL_D", "CAM_BEHIND_BOARD", "CABLE_SLOT")
+
+# --- Carcasa nueva BE-CARCASA (D2). Mira hacia -Z; la cara trasera de montaje está en z = 0 ---
+CASE_WALL = WALL_MIN
+CASE_CAVITY = CAM_BOARD + 2 * CLEARANCE_SLIDE
+CASE_OUTER = CASE_CAVITY + 2 * CASE_WALL
+CASE_BACK_T = 8.0        # aloja la tuerca 1/4-20 y los pasadores; ≥ WALL_STRUCT
+CASE_DEPTH = CASE_BACK_T + CAM_BEHIND_BOARD + BOARD_T   # hasta la cara frontal de la placa
+CASE_FLANGE = 56.0       # brida frontal para los 4 tornillos M3 de la tapa
+CASE_FLANGE_T = 4.0
+CASE_SCREW_XY = 24.5     # tornillos de la tapa en (±, ±)
+CASE_LID_T = 3.0
+CASE_POST = 3.0          # postes que aprietan la placa contra la tapa
+CASE_PIN_X = 13.0        # pasadores antigiro en (±CASE_PIN_X, 0) de la cara trasera
+PIN_DEPTH = 6.0
+LENS_CLEAR_D = LENS_BARREL_D + 2 * LENS_KEEPOUT
+
+# --- Tornillos de unión ---
+BOLT_14_20_LEN = 12.7
+BOLT_14_20_HEAD_D = 9.5
+BOLT_14_20_HEAD_H = 6.35
+M3_NUT_FLATS = 5.5
+M3_NUT_H = 2.4
+
+# --- Cuña BE-CUNA (D3, D4). Cara superior en z = 0 contra el carro; la inferior, inclinada, contra la carcasa ---
+WEDGE_T0 = 11.0          # grosor en el canto fino: cabe la cabeza del 1/4-20 a 0°
+WEDGE_SEAT = 4.0         # material bajo la cabeza del tornillo
+WEDGE_M3_Y = 15.0        # tornillos M3 al carro en (0, ±WEDGE_M3_Y)
 
 # --- Probeta de tolerancias (B7) ---
 PROBE_CLEARANCES = (0.0, 0.1, 0.2, 0.3, 0.4)

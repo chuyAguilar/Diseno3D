@@ -1,6 +1,6 @@
 # Memoria — estado de hoy
 
-Spec activo: `specs/001-barra-v01/` (plan autorizado; fase 1 hecha, sigue la fase 2: carcasa y cuñas).
+Spec activo: `specs/001-barra-v01/` (plan autorizado; fases 1 y 2 hechas, sigue la fase 3: carro, pinza y clip).
 
 ## Dónde estamos (2026-10-29)
 
@@ -11,7 +11,8 @@ Spec activo: `specs/001-barra-v01/` (plan autorizado; fase 1 hecha, sigue la fas
 
 ## Lo siguiente
 
-1. Spec 001, fase 2 (carcasa con antigiro y cuñas). La barra v01 servirá para pedir capital a la empresa (STEP/3MF + PNG).
+1. Spec 001, fase 3 (carro sobre el perfil, pinza de borde, clip de cable). Hechas: carcasa (`cad/piezas/carcasa.py`) y cuñas (`cad/piezas/cuna.py`), D5–D6 en CONTEXT.
+   Nota build123d 0.13: el texto en planos no horizontales se graba fuera de BuildPart (`carcasa.engrave`). La barra v01 servirá para pedir capital a la empresa (STEP/3MF + PNG).
    Medidas de cámara: de `Camera_Case_Snap_Base` (cavidad 39.12, pared 1.52, lente Ø14.6, tuerca 1/4-20 en un lateral); «sin medir» hasta B4.
 2. Fase 4 de la entrevista: consolidar `docs/CONTEXT.md`.
 3. Comprar los materiales (B8, `docs/COMPRAS.md`).

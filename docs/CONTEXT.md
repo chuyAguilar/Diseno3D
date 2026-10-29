@@ -46,6 +46,8 @@ Sirve a la vez de banco de pruebas (elegir separación y ángulo) y de estructur
 | D2 | Carcasa rediseñada con un elemento de registro antigiro (pasador o escalón), sin tocar la zona del lente. | Un solo tornillo deja girar la cámara sobre su eje (P5, P6). |
 | D3 | El ángulo de la cuña es **por cámara**, hacia dentro; la convergencia total es el doble. | Elegido por el autor. |
 | D4 | Objetivo: que los **ejes ópticos se crucen** a la distancia de trabajo. Juego de cuñas de 0° a 15° cada 2.5°. | Cruce a 375 mm: 7.6° (S100), 11.3° (S150), 14.9° (S200). |
+| D5 | Las cámaras miran **en vertical hacia abajo**; la barra se coloca sobre el borde justo encima de Marker0. La cuña solo da el giro hacia dentro. | Evita una segunda inclinación desconocida (spec 001, fase 2). |
+| D6 | La carcasa se monta por su **cara trasera** (placa de 8 mm, tuerca 1/4-20 y 2 pasadores). La tapa del lente va atornillada con 4 M3 y la placa de la cámara queda apretada entre la tapa y 4 postes. | Camino de carga rígido y sin piezas a presión (transporte, P6); el lente no se toca (P5). |
 
 Cruce de ejes con cuñas discretas: `D = (S/2) / tan(a)`. Ejemplos con S150: 10° → 425 mm, 12.5° → 338 mm.
 
