@@ -1,8 +1,25 @@
 # CONTEXT — Barra estéreo para dos cámaras
 
-Requisitos, interfaces, parámetros maestros, entorno y manufactura de la pieza base. Se rellena con la entrevista de definición (fases 1–3) y se consolida en la fase 4. Lo que aquí se fija lo leen todas las piezas (P4).
+Requisitos, interfaces, parámetros maestros, entorno y manufactura de la pieza base. Sale de la entrevista de definición (fases 1–3) y se consolidó en la fase 4. Lo que aquí se fija lo leen todas las piezas (P4); los valores numéricos viven en `cad/params.py`.
 
-Estado: **fases 1, 2 y 3 cerradas**; falta la consolidación (fase 4).
+Estado: **entrevista cerrada (fases 1–4), 2026-10-29.** Versión de la estructura: v01 (spec 001).
+
+## 0. Requisitos verificables
+
+Cada requisito tiene un criterio con número y una forma de comprobarlo. «Modelo» quiere decir medido por `pytest` sobre el CAD; «Física» quiere decir medido sobre la pieza impresa y montada.
+
+| Id | Criterio | Cómo se comprueba | Estado v01 |
+| --- | --- | --- | --- |
+| V1 (R1, P6) | Δ ángulo relativo cámara–cámara < 0.05° tras tocar la barra, tirar del cable y moverla entera; calibración estéreo Δrot < 0.05°, Δtras < 0.3 mm | Física: pose de Marker0 y calibración con tablero (§3, «Verificación de rigidez») | Pendiente: hace falta el perfil (B8) |
+| V2 (R2, P7) | Carros en ±50, ±75, ±100 mm (paso 25 mm); tras desmontar y volver a montar, la posición se repite ± 0.3 mm (el mismo tope que Δtras de V1) | Modelo: posiciones del ensamble. Física: calibre sobre el índice | Parcial: la posición la fija el apriete; falta la regleta (B9) |
+| V3 (R3, D4) | 7 cuñas de 0° a 15° cada 2.5°, cada una igual al nominal ± 0.01° en el modelo, con el ángulo grabado | Modelo: `tests/test_carcasa_cuna.py` | Hecho en el modelo; falta medir la pieza impresa |
+| V4 (R3, D4) | Los ejes ópticos se cruzan a 350–400 mm de los lentes, o el cruce queda anotado en `datos.txt` | Modelo: `cad.exportar <código>` | S150-A12.5: cruce a 309 mm (41 mm sobre Marker0); con la cuña ideal de 11.1° se cruzaría en Marker0 |
+| V5 (R4, P5) | 0 mm³ de invasión en la holgura del portalente; agujero del lente Ø 17.00 mm | Modelo: `tests/test_carcasa_cuna.py` | Hecho en el modelo |
+| V6 (R5, E1) | La barra se sujeta a los dos bordes con tornillo, no por presión; boca de la pinza = borde + 0.30 mm | Modelo: `tests/test_sujecion.py`. Física: la barra no se mueve al levantar la caja | Hecho en el modelo |
+| V7 (R6) | Un tirón del USB no llega a la cámara: el cable pasa por ≥ 2 clips antes de la carcasa | Física: tirar del cable y repetir V1 | Hay 4 clips en el modelo; falta la prueba física |
+| V8 (R7) | Un punto de referencia en la barra, legible con metro de cinta (≈ 1 mm), con posición conocida en el modelo | Modelo y física | **No modelado** (B10) |
+| V9 (fabricación) | Toda pieza impresa cabe en la cama de 256 mm; 0 mm³ de interferencia en el ensamble | Modelo: `tests/` | Hecho: 41/41 pruebas |
+| V10 (holguras) | Las holguras de `cad/params.py` las confirma la probeta impresa en el material en uso | Física: probeta (B7) | Pendiente |
 
 ## 1. Propósito e integración
 
@@ -18,7 +35,7 @@ Sirve a la vez de banco de pruebas (elegir separación y ángulo) y de estructur
 | --- | --- | --- |
 | R1 | Rigidez entre cámaras | Giro relativo ≪ 0.1° (≈ 0.65 mm a 375 mm) (P6). Preferible aluminio 2020 o impresa gruesa con nervios. |
 | R2 | Separación elegible y repetible | Marcas cada 25 mm; al menos 100, 150 y 200 mm entre centros de cámara. |
-| R3 | Ángulo hacia dentro fijo y conocido | Cuñas con el ángulo grabado (0°, 5°, 10°); campos cruzados a 35–40 cm, donde va Marker0. |
+| R3 | Ángulo hacia dentro fijo y conocido | Cuñas con el ángulo grabado, de 0° a 15° cada 2.5° (D4); campos cruzados a 35–40 cm, donde va Marker0. |
 | R4 | Montaje sin tocar el lente | Sujeción por la carcasa (P5). |
 | R5 | Sujeción a la caja de luz o a un pie | Sin combarse ni girar; se mueve la barra entera sin aflojar cámaras. |
 | R6 | Alivio de tensión de cables | Bridas o clips en la barra; el USB no tira de la cámara. |
@@ -29,9 +46,9 @@ Sirve a la vez de banco de pruebas (elegir separación y ángulo) y de estructur
 | Elemento | Datos | Pendiente |
 | --- | --- | --- |
 | Cámaras (×2) | SVPRO USB, CMOS, lente M12 (el enfoque es la rosca del lente), FOV 85°, MJPEG. | B3: eje del FOV. |
-| Carcasa | Thingiverse #4696080 (`recursos/38mm Board Mount…`): placa de 38 mm, carcasa 42.16 × 42.16 mm, base 29.21 mm + tapa trasera a presión 12.65 mm. Tuerca 1/4-20 a presión en la carcasa. | B4: medir la impresa y la salida del cable. |
+| Carcasa | Thingiverse #4696080 (`recursos/38mm Board Mount…`): placa de 38 mm, carcasa 42.16 × 42.16 mm, base 29.21 mm + tapa trasera a presión 12.65 mm. Tuerca 1/4-20 a presión en la carcasa. Solo sirve de referencia de medidas: la v01 usa una carcasa nueva (D6). | B4: medir la impresa y la salida del cable. |
 | Adaptador actual | Thingiverse #2062243 (`recursos/GoPro to tripod…`): 1/4-20 ↔ GoPro. Aletas 2.95 mm, separación 3.45 mm, perno M5. | — |
-| Caja de luz | Puluz, 40 × 40 × 40 cm; la barra se sujeta al borde, de ≈ 4.5 mm de grosor. | Fase 3: por dentro o por fuera. |
+| Caja de luz | Puluz, 40 × 40 × 40 cm; la barra se sujeta al borde, de ≈ 4.5 mm de grosor. Cámaras por dentro (E2). | — |
 | Marker0 | En el suelo de la caja, a 35–40 cm de las cámaras. | — |
 | Medición en el mundo | Metro de cinta (≈ 1 mm). | — |
 | Software | Cada configuración tiene un código grabado (p. ej. `S150-A12.5`) que nombra su archivo de configuración. | B5: formato. |
@@ -55,7 +72,7 @@ Cruce de ejes con cuñas discretas: `D = (S/2) / tan(a)`. Ejemplos con S150: 10�
 
 ### Parámetros maestros
 
-Valores iniciales; los de holgura se validan con una probeta de tolerancias antes de la primera pieza (B7, P3). Se definirán en un único archivo de parámetros cuando haya herramienta CAD (B1, P4).
+Valores iniciales; los de holgura se validan con una probeta de tolerancias antes de la primera pieza (B7, P3). El único archivo de parámetros es `cad/params.py` (P4); esta tabla resume los principales.
 
 | Nombre | Valor | Qué es |
 | --- | --- | --- |
@@ -72,7 +89,7 @@ Valores iniciales; los de holgura se validan con una probeta de tolerancias ante
 
 ### Fabricación y tornillería base
 
-- Impresora Bambu Lab, boquilla 0.4 mm. **PLA para empezar; migración prevista a PETG.** Las piezas no deben depender de propiedades exclusivas del PLA, y las holguras se recalibran con la probeta al cambiar de material (B7). Riesgo de fluencia del PLA con carga sostenida y calor: se evalúa en la fase 3.
+- Impresora Bambu Lab, boquilla 0.4 mm. **PLA para empezar; migración prevista a PETG.** Las piezas no deben depender de propiedades exclusivas del PLA, y las holguras se recalibran con la probeta al cambiar de material (B7). Fluencia del PLA con carga sostenida y calor: válido a 20–30 °C (fase 3, «Entorno»).
 - Tornillería: **M5** con tuerca en T para el perfil 2020; **M3** en piezas pequeñas; **1/4-20** solo en la interfaz con la cámara (tuerca 11.25 mm entre caras, 5.6 mm de alto).
 
 ### Convenciones

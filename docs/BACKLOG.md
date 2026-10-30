@@ -13,6 +13,7 @@ Lo que falta. Prioridad **alta**: puede dar un resultado equivocado o impide ava
 | B7 | Probeta de tolerancias en la Bambu Lab con PLA | Alta |
 | B8 | Comprar los materiales de `docs/COMPRAS.md` | Alta |
 | B9 | Regleta con muescas: fijar la separación por forma, no por apriete (P7) | Alta |
+| B10 | Punto de referencia en la barra (R7) | Media |
 
 ## Abiertos
 
@@ -71,6 +72,14 @@ Lo que falta. Prioridad **alta**: puede dar un resultado equivocado o impide ava
 - **De dónde:** spec 001, fase 3, 2026-10-29.
 - **Qué haría falta:** decidir qué ranura lateral queda libre (la -Y la usa la pinza en sus extremos) y añadir el diente al carro.
 - **Prioridad:** alta — sin ella, la separación no es repetible tras un golpe.
+
+### B10 · Punto de referencia en la barra (R7)
+
+- **Qué:** un agujero o marca en la barra (en una pinza o en el centro del perfil) desde el que se mide con metro de cinta la posición de la barra en el mundo, con su posición conocida en el modelo.
+- **Por qué queda:** la v01 no lo modela; el spec 001 no lo incluía.
+- **De dónde:** entrevista, fase 4 (consolidación de `docs/CONTEXT.md`, V8), 2026-10-29.
+- **Qué haría falta:** elegir dónde va (lo natural es el centro de la barra, encima de Marker0, para que coincida con el origen de los ejes de la barra) y grabarlo.
+- **Prioridad:** media: hoy se puede medir desde el borde del perfil, pero con menos precisión.
 
 ## Cerrados
 
