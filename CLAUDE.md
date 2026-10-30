@@ -43,7 +43,9 @@ No leas `recursos/` entero: son piezas de terceros (Thingiverse) que sirven de r
 
 - Windows 11, PowerShell y Git Bash. Python vía pyenv (`python`).
 - CAD: **build123d** en `.venv` (Python 3.12; `requirements.txt`). Parámetros solo en `cad/params.py`.
-- Suite y comprobación de «no cambió»: `.venv\Scripts\python.exe -m pytest -q` (≈ 7 s; tiempo límite 300 s). Las exportaciones van a `salidas/`, fuera de git.
+- Suite y comprobación de «no cambió»: `.venv\Scripts\python.exe -m pytest -q` (≈ 22 s; tiempo límite 300 s).
+- Exportar una configuración: `.venv\Scripts\python.exe -m cad.exportar S150-A12.5` (≈ 40 s) → `salidas/`, fuera de git.
+- Ojo: `export_stl` falla en silencio con la «ñ» de la ruta; usar `cad.exportar._stl`, que pasa por una carpeta temporal.
 - Fabricación: perfil de aluminio 2020 + piezas impresas en Bambu Lab (PLA, después PETG). Detalle en `docs/CONTEXT.md`.
 
 ## Cómo reportar

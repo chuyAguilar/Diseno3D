@@ -51,6 +51,8 @@ Sirve a la vez de banco de pruebas (elegir separación y ángulo) y de estructur
 
 Cruce de ejes con cuñas discretas: `D = (S/2) / tan(a)`. Ejemplos con S150: 10° → 425 mm, 12.5° → 338 mm.
 
+**Medido sobre el ensamble v01 (spec 001):** en el código `S<sep>`, `sep` es la posición de los carros (las marcas de la barra). Al girar la carcasa, la cuña acerca los lentes: con `S150-A12.5` los centros de lente quedan a **137.0 mm**, a 350 mm sobre Marker0, y los ejes se cruzan 309 mm bajo los lentes (41 mm sobre Marker0). La cuña ideal para cruzar en Marker0 sería 11.1°. `python -m cad.exportar <código>` da estos valores para cualquier configuración (`salidas/<código>/datos.txt`).
+
 ### Parámetros maestros
 
 Valores iniciales; los de holgura se validan con una probeta de tolerancias antes de la primera pieza (B7, P3). Se definirán en un único archivo de parámetros cuando haya herramienta CAD (B1, P4).
