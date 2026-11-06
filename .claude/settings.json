@@ -1,14 +1,10 @@
 {
   "permissions": {
     "deny": [
-      "Bash(git commit *)",
-      "Bash(git * commit *)",
-      "Bash(git push *)",
-      "Bash(git * push *)",
-      "PowerShell(git commit *)",
-      "PowerShell(git * commit *)",
-      "PowerShell(git push *)",
-      "PowerShell(git * push *)"
+      "Bash(git push --force*)",
+      "Bash(git push -f*)",
+      "PowerShell(git push --force*)",
+      "PowerShell(git push -f*)"
     ],
     "allow": [
       "Bash(git status*)",

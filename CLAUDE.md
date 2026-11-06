@@ -20,18 +20,18 @@ No leas `recursos/` entero: son piezas de terceros (Thingiverse) que sirven de r
 2. Se escribe `plan.md` (archivos, fases con criterio medible, BACKLOG, ADR, preguntas, títulos de commit) sin modelar nada (P2).
 3. El autor lo lee y dice «autorizado». Solo entonces la línea 1 de `tasks.md` pasa a «Plan autorizado por el autor el AAAA-MM-DD».
 4. Se hace una fase cada vez. Se mide su criterio (P3) y se marca su casilla en `tasks.md` con el número obtenido y la fecha.
-5. Se cierra la fase (abajo) y se espera a que el autor diga «commiteado» antes de la siguiente.
+5. Se cierra la fase (abajo), con su commit y su push, y se espera a que el autor diga «sigue» antes de la siguiente.
 
 ## Cerrar una fase
 
 - Pon al día `memory.md` (≤ 12 KB, con la línea «Spec activo» correcta).
 - Pasa a `docs/BACKLOG.md` lo que quedó pendiente, con su prioridad, y a «Cerrados» lo que se cerró, con la fecha.
-- Propón al autor los dos comandos listos para copiar: el `git add` exacto y el `git commit -m "<título>"` (español, imperativo, corto, sin coautor). No los ejecutes (P1).
-- Cuenta los commits sin subir (`git rev-list --count @{u}..HEAD`, o `git rev-list --count HEAD` si no hay remoto). Al llegar a 10, avisa al autor de que toca hacer `git push`.
+- Haz el `git add` de los archivos exactos (nunca `git add -A`) y `git commit -m "<título>"` (español, imperativo, corto, sin coautor), y luego `git push` (P1, ADR-001).
+- Nunca `push --force`, ni reescribir historia ya subida, ni cambiar la visibilidad del repo sin que el autor lo pida.
 
 ## Reglas de operación
 
-- Nunca `git commit` ni `git push`, de ninguna forma (P1).
+- Commit y push al cerrar cada fase (P1, ADR-001); nada de `--force`.
 - Ninguna pieza toca el anillo del lente (P5); ninguna decisión de rigidez sin número (P3, P6).
 - Medidas en milímetros y grados. Las roscas imperiales (1/4-20) se nombran como tales y su medida en mm va al lado.
 - Los parámetros maestros viven solo donde diga `docs/CONTEXT.md` (P4); ninguna pieza repite un número a mano.
@@ -55,7 +55,7 @@ No leas `recursos/` entero: son piezas de terceros (Thingiverse) que sirven de r
 
 - Corto. Primero el resultado, luego el número que lo respalda, luego lo pendiente.
 - Archivos como `ruta:línea`. Si un paso se saltó o una medida no se hizo, se dice.
-- Al cerrar: archivos tocados con sus bytes, título del commit y `git add`.
+- Al cerrar: archivos tocados con sus bytes y el hash y título del commit subido.
 
 ## Una sola fuente por cosa
 
@@ -66,7 +66,7 @@ No leas `recursos/` entero: son piezas de terceros (Thingiverse) que sirven de r
 | `memory.md` | El estado de hoy y el spec activo |
 | `docs/CONTEXT.md` | Requisitos, interfaces, parámetros maestros, entorno y manufactura |
 | `docs/ARCHITECTURE.md` | El qué (etapa 2) |
-| `docs/DECISIONS.md` | El porqué: ADR numerados (etapa 2) |
+| `docs/DECISIONS.md` | El porqué: ADR numerados |
 | `docs/BACKLOG.md` | Lo que falta |
 | `docs/COMPRAS.md` | Lo que hay que comprar, con cantidades y precios de referencia |
 | `docs/PRUEBAS.md` | Lo que se midió: criterio, número y método |

@@ -2,7 +2,7 @@
 
 Lo que no se negocia. Cada principio dice de dónde viene. Si algo choca con esta constitución, gana la constitución y se avisa al autor. Cambiar un principio exige un ADR (principio 9).
 
-1. **Cada quien su papel.** El autor autoriza cada plan y hace cada commit; ningún agente ejecuta `git commit` ni `git push`. Quien modela no prueba; quien planea no modela. *Fuente: método del autor (segmentadorDicom).*
+1. **Cada quien su papel.** El autor autoriza cada plan. El agente hace `git commit` y `git push` al cerrar cada fase, sin esperar a que el autor los haga (ADR-001). Quien modela no prueba; quien planea no modela. *Fuente: método del autor (segmentadorDicom); ADR-001, 2026-11-05.*
 2. **Plan antes de modelo, fase por fase.** Nada se modela ni se imprime sin un plan autorizado en `specs/NNN-nombre/`. Lo que se deja para después va a `docs/BACKLOG.md` en el momento, no al final. *Fuente: método del autor.*
 3. **Medir antes de decidir.** «Se ve bien» o «parece firme» no cierra nada; cierra un número que coincide con lo esperado (ángulo, separación, giro, error de reproyección) y cómo se midió. *Fuente: método del autor.*
 4. **Una sola fuente por cosa.** Cada dato vive en un solo archivo (tabla en `CLAUDE.md`). Los parámetros maestros (tolerancias, grosores, medidas de interfaces) se definen en un único sitio y todas las piezas los leen de ahí. *Fuente: método del autor; entrevista, fase 2.*
