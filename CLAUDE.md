@@ -43,8 +43,11 @@ No leas `recursos/` entero: son piezas de terceros (Thingiverse) que sirven de r
 
 - Windows 11, PowerShell y Git Bash. Python vía pyenv (`python`).
 - CAD: **build123d** en `.venv` (Python 3.12; `requirements.txt`). Parámetros solo en `cad/params.py`.
-- Suite y comprobación de «no cambió»: `.venv\Scripts\python.exe -m pytest -q` (≈ 22 s; tiempo límite 300 s).
+- Suite y comprobación de «no cambió»: `.venv\Scripts\python.exe -m pytest -q` (≈ 31 s, 45 pruebas; tiempo límite 300 s).
 - Exportar una configuración: `.venv\Scripts\python.exe -m cad.exportar S150-A12.5` (≈ 40 s) → `salidas/`, fuera de git.
+- Piezas sueltas fuera de la barra: `taller/<pieza>/` (ver `taller/README.md`); se exportan con `.venv\Scripts\python.exe -m taller.<pieza>.exportar`.
+- Revisar el diseño antes de exportar: `.venv\Scripts\python.exe -m cad.visor S150-A12.5` (≈ 7 s) o `-m cad.visor taller.<pieza>` → `visor.html` en su `salidas/`; se abre con doble clic (three.js de jsDelivr: pide internet).
+- Tabla de parámetros: `.venv\Scripts\python.exe -m cad.listar_params` regenera `docs/PARAMETROS.md`; la suite falla si queda vieja.
 - Ojo: `export_stl` falla en silencio con la «ñ» de la ruta; usar `cad.exportar._stl`, que pasa por una carpeta temporal.
 - Fabricación: perfil de aluminio 2020 + piezas impresas en Bambu Lab (PLA, después PETG). Detalle en `docs/CONTEXT.md`.
 
@@ -65,6 +68,8 @@ No leas `recursos/` entero: son piezas de terceros (Thingiverse) que sirven de r
 | `docs/ARCHITECTURE.md` | El qué (etapa 2) |
 | `docs/DECISIONS.md` | El porqué: ADR numerados (etapa 2) |
 | `docs/BACKLOG.md` | Lo que falta |
-| `docs/COMPRAS.md` | Lo que hay que comprar, con cantidades y precios de referencia || `docs/PRUEBAS.md` | Lo que se probó (etapa 2) |
+| `docs/COMPRAS.md` | Lo que hay que comprar, con cantidades y precios de referencia |
+| `docs/PRUEBAS.md` | Lo que se midió: criterio, número y método |
+| `docs/PARAMETROS.md` | Tabla de parámetros **generada** desde los `params.py`; no es fuente |
 | `specs/NNN-nombre/` | Una meta: `spec.md`, `plan.md`, `clarify.md`, `tasks.md` |
 | `recursos/` | Piezas de terceros de referencia; no se editan |

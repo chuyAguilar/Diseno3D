@@ -14,6 +14,7 @@ Lo que falta. Prioridad **alta**: puede dar un resultado equivocado o impide ava
 | B8 | Comprar los materiales de `docs/COMPRAS.md` | Alta |
 | B9 | Regleta con muescas: fijar la separación por forma, no por apriete (P7) | Alta |
 | B10 | Punto de referencia en la barra (R7) | Media |
+| B11 | Skill de «diseñador CAD repetible» a partir del spec 003 | Media |
 
 ## Abiertos
 
@@ -80,6 +81,14 @@ Lo que falta. Prioridad **alta**: puede dar un resultado equivocado o impide ava
 - **De dónde:** entrevista, fase 4 (consolidación de `docs/CONTEXT.md`, V8), 2026-10-29.
 - **Qué haría falta:** elegir dónde va (lo natural es el centro de la barra, encima de Marker0, para que coincida con el origen de los ejes de la barra) y grabarlo.
 - **Prioridad:** media: hoy se puede medir desde el borde del perfil, pero con menos precisión.
+
+### B11 · Skill de diseñador CAD repetible
+
+- **Qué:** convertir el ciclo del spec 003 en una skill del método (etapa 2): fotos con calibre → `params.py` → `modelo.py` → `medir_pieza.py` + prueba → `exportar.py` (STL, 3MF, PNG en paralelo, `datos.txt`) → impresión → medida real apuntada en `tasks.md`.
+- **Por qué queda:** el autor quiere un proceso de diseño CAD experto y repetible para el proyecto; falta ver la pieza impresa para cerrar el ciclo.
+- **De dónde:** spec 003, 2026-11-03.
+- **Qué haría falta:** la medida real de los separadores; plantilla de carpeta en `taller/`.
+- **Prioridad:** media.
 
 ## Cerrados
 
