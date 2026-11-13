@@ -15,7 +15,7 @@ La caja Puluz real (`camarasPosicion.jpeg`, `camarasPosicion2.jpeg`) está **cer
 
 ## La idea
 
-**Modelo 3D interactivo:** `visor.html` (en esta carpeta; se abre con doble clic).
+**Modelos 3D interactivos** (en esta carpeta; se abren con doble clic): `visor.html`, la barra montada en la caja, y `visor-estructura.html`, la estructura sola.
 
 ![Vista desde el frente](renders/1-frente.png)
 

@@ -218,7 +218,7 @@ const axesHelper = new THREE.AxesHelper(R * .25); axesHelper.visible = false; wo
 const dirs = {iso: [1, -1.2, .9], front: [0, -1, 0.0001], top: [0, -0.0001, 1], side: [1, 0, 0.0001]};
 function setView(v) {
   const d = new THREE.Vector3(...dirs[v]).normalize();
-  for (const c of [persp, ortho]) { c.position.copy(center).addScaledVector(d, R * 2.2); c.lookAt(center); }
+  for (const c of [persp, ortho]) { c.position.copy(center).addScaledVector(d, size.length() * 1.3); c.lookAt(center); }
   ortho.zoom = 1; ortho.updateProjectionMatrix(); controls.target.copy(center); controls.update();
 }
 function resize() {

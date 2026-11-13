@@ -145,6 +145,13 @@ def main():
                 points=[(tuple(cross), "#B4361C", "cruce")], panel=False,
                 subtitle=f"Concepto {code} · lentes a {lens_sep:.0f} mm · ejes cruzados a {along:.0f} mm",
                 share=OUT / "visor-pagina.html")
+    # La misma estructura sola, sin la caja, Marker0 ni el tablero (lo que se fabrica y se monta).
+    solo = [it for it in items if it.role not in ("caja", "marker")]
+    visor.write([(it.name, it.role, color[it.role], it.part) for it in solo], OUT / "visor-estructura.html",
+                "Estructura barra v02", panel=False,
+                subtitle=f"Concepto {code} · perfil {P.BAR_LEN:.0f} mm · inclinación {P.PITCH:g}° · "
+                         f"lentes a {lens_sep:.0f} mm",
+                share=OUT / "visor-estructura-pagina.html")
 
     lines = [f"Concepto v02 {code}", f"Lentes en {tuple(round(v, 1) for v in axes[0][0])} y "
              f"{tuple(round(v, 1) for v in axes[1][0])}; separación {lens_sep:.1f} mm",
