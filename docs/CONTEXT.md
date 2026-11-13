@@ -63,7 +63,7 @@ Sirve a la vez de banco de pruebas (elegir separación y ángulo) y de estructur
 | D2 | Carcasa rediseñada con un elemento de registro antigiro (pasador o escalón), sin tocar la zona del lente. | Un solo tornillo deja girar la cámara sobre su eje (P5, P6). |
 | D3 | El ángulo de la cuña es **por cámara**, hacia dentro; la convergencia total es el doble. | Elegido por el autor. |
 | D4 | Objetivo: que los **ejes ópticos se crucen** a la distancia de trabajo. Juego de cuñas de 0° a 15° cada 2.5°. | Cruce a 375 mm: 7.6° (S100), 11.3° (S150), 14.9° (S200). |
-| D5 | Las cámaras miran **en vertical hacia abajo**; la barra se coloca sobre el borde justo encima de Marker0. La cuña solo da el giro hacia dentro. | Evita una segunda inclinación desconocida (spec 001, fase 2). |
+| D5 | **Sustituida por ADR-002 (2026-11-12): las cámaras miran en diagonal desde el canto de la abertura.** Texto original: las cámaras miran **en vertical hacia abajo**; la barra se coloca sobre el borde justo encima de Marker0. La cuña solo da el giro hacia dentro. | Evita una segunda inclinación desconocida (spec 001, fase 2). |
 | D6 | La carcasa se monta por su **cara trasera** (placa de 8 mm, tuerca 1/4-20 y 2 pasadores). La tapa del lente va atornillada con 4 M3 y la placa de la cámara queda apretada entre la tapa y 4 postes. | Camino de carga rígido y sin piezas a presión (transporte, P6); el lente no se toca (P5). |
 
 Cruce de ejes con cuñas discretas: `D = (S/2) / tan(a)`. Ejemplos con S150: 10° → 425 mm, 12.5° → 338 mm.
@@ -107,7 +107,7 @@ Valores iniciales; los de holgura se validan con una probeta de tolerancias ante
 
 | Id | Decisión | Consecuencia de diseño |
 | --- | --- | --- |
-| E1 | La barra cruza la caja **de borde a borde** y se pinza a dos bordes opuestos (≈ 4.5 mm). | Viga con dos apoyos, no en voladizo. Las pinzas no pueden depender de la holgura del borde: ajuste por tornillo, no por presión del PLA. |
+| E1 | **Sustituida por ADR-002 (2026-11-12): la caja está cerrada por arriba; la barra cuelga del canto superior de la abertura.** Texto original: la barra cruza la caja **de borde a borde** y se pinza a dos bordes opuestos (≈ 4.5 mm). | Viga con dos apoyos, no en voladizo. Las pinzas no pueden depender de la holgura del borde: ajuste por tornillo, no por presión del PLA. |
 | E2 | Cámaras **por dentro**, colgando, mirando a Marker0. | Cuña y carcasa cuelgan bajo la viga; el cable sube por la barra. |
 | E3 | **Perfil de aluminio 2020** + piezas impresas (carros, cuñas, carcasas, pinzas). | La rigidez la da el aluminio; lo impreso son juntas cortas y gruesas. Marcas cada 25 mm en una regleta o en el carro. |
 | E4 | CAD en **build123d** (Python). | Parámetros maestros en un solo módulo; exporta STEP/STL/3MF; cotas de interfaz verificables con pruebas (B2). |

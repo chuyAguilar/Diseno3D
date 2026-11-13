@@ -15,8 +15,17 @@ Lo que falta. Prioridad **alta**: puede dar un resultado equivocado o impide ava
 | B9 | Regleta con muescas: fijar la separación por forma, no por apriete (P7) | Alta |
 | B10 | Punto de referencia en la barra (R7) | Media |
 | B11 | Skill de «diseñador CAD repetible» a partir del spec 003 | Media |
+| B12 | Desarrollar el concepto v02 (spec 004): pinza con pivote, medir el canto, rigidez del pivote | Alta |
 
 ## Abiertos
+
+### B12 · Desarrollar el concepto v02
+
+- **Qué:** convertir `concepto/abertura/` en piezas fabricables: BE-PINZA-PIVOTE, BE-CUBO-PERFIL, perfil de 350 mm y regleta, con sus pruebas.
+- **Por qué queda:** el autor pidió solo los renders y la idea; lo desarrolla otra persona.
+- **De dónde:** spec 004 y ADR-002, 2026-11-12.
+- **Qué haría falta:** medir el canto de la abertura (grosor y si es rígido), resolver el espacio a las paredes (±199 frente a ±200 mm) y medir la rigidez del pivote con V1. Los cinco puntos están en `specs/004-reorientacion-abertura/spec.md`.
+- **Prioridad:** alta: la v01 no se puede montar en la caja real.
 
 ### B3 · FOV de 85°: ¿diagonal u horizontal?
 
