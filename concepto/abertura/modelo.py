@@ -31,24 +31,34 @@ def _y(a, b, z0, z1, x0, x1):
                                                              align=(Align.CENTER, Align.CENTER, Align.MIN))
 
 
-def pinza_pivote(pitch):
+def pinza_pivote(pitch, post_y=None):
     """BE-PINZA-PIVOTE del extremo +X, en el marco local: eje del perfil = eje X, x = 0 en la
     cara del extremo, techo con su cara inferior en z = PIVOT_BELOW y su canto en y = -PIVOT_IN.
-    Devuelve (placa con pinza, cubo + perilla, pasador) por separado para colorearlos."""
+    Con `post_y` (diseño de pie, sin caja) la placa no lleva mordaza: una oreja la atornilla con
+    2 M5 a la cara interior de un poste 2020 centrado en y = post_y, por fuera de la placa.
+    Devuelve (placa, cubo + perilla, pasador) por separado para colorearlos."""
     x0, x1 = P.HUB_T, P.HUB_T + P.PLATE_T
     plate = Location((x0, 0, 0)) * Cylinder(P.PLATE_D / 2, P.PLATE_T, rotation=(0, 90, 0),
                                             align=(Align.CENTER, Align.CENTER, Align.MIN))
-    # columna de la placa hasta la mordaza inferior
-    plate += _y(-P.PIVOT_IN, -P.PIVOT_IN + 30, 0, P.PIVOT_BELOW, x0, x1)
-    gap = P.EDGE_T + P.CLEARANCE_SLIDE
-    cx0, cx1 = x0, x0 + P.CLAMP_W
-    zb = P.PIVOT_BELOW
-    plate += _y(-P.PIVOT_IN, -P.PIVOT_IN + P.JAW_IN, zb - P.JAW_T, zb, cx0, cx1)                 # mordaza inferior
-    plate += _y(-P.PIVOT_IN - P.SPINE_T, -P.PIVOT_IN, zb - P.JAW_T, zb + gap + P.JAW_T, cx0, cx1)  # lomo
-    plate += _y(-P.PIVOT_IN - P.SPINE_T, -P.PIVOT_IN + P.JAW_IN, zb + gap, zb + gap + P.JAW_T, cx0, cx1)  # superior
-    # M5 de apriete de la mordaza y agujero del eje
-    plate -= Location(((cx0 + cx1) / 2, -P.PIVOT_IN + P.JAW_IN - 12, zb - P.JAW_T)) * Cylinder(
-        (P.M5_D + 0.4) / 2, gap + 2 * P.JAW_T, align=(Align.CENTER, Align.CENTER, Align.MIN))
+    if post_y is not None:
+        s = P.PROFILE_SIZE / 2
+        plate += _y(post_y - s, 0, -s, s, x0, x1)                                                  # oreja al poste
+        for z in (-s / 2, s / 2):
+            plate -= Location((x0, post_y, z)) * Cylinder((P.M5_D + 0.4) / 2, P.PLATE_T, rotation=(0, 90, 0),
+                                                          align=(Align.CENTER, Align.CENTER, Align.MIN))
+    else:
+        # columna de la placa hasta la mordaza inferior
+        plate += _y(-P.PIVOT_IN, -P.PIVOT_IN + 30, 0, P.PIVOT_BELOW, x0, x1)
+        gap = P.EDGE_T + P.CLEARANCE_SLIDE
+        cx0, cx1 = x0, x0 + P.CLAMP_W
+        zb = P.PIVOT_BELOW
+        plate += _y(-P.PIVOT_IN, -P.PIVOT_IN + P.JAW_IN, zb - P.JAW_T, zb, cx0, cx1)                 # mordaza inferior
+        plate += _y(-P.PIVOT_IN - P.SPINE_T, -P.PIVOT_IN, zb - P.JAW_T, zb + gap + P.JAW_T, cx0, cx1)  # lomo
+        plate += _y(-P.PIVOT_IN - P.SPINE_T, -P.PIVOT_IN + P.JAW_IN, zb + gap, zb + gap + P.JAW_T, cx0, cx1)  # superior
+        # M5 de apriete de la mordaza
+        plate -= Location(((cx0 + cx1) / 2, -P.PIVOT_IN + P.JAW_IN - 12, zb - P.JAW_T)) * Cylinder(
+            (P.M5_D + 0.4) / 2, gap + 2 * P.JAW_T, align=(Align.CENTER, Align.CENTER, Align.MIN))
+    # agujero del eje
     plate -= Location((x0, 0, 0)) * Cylinder(P.BOSS_D / 2 + 0.3, P.PLATE_T, rotation=(0, 90, 0),
                                              align=(Align.CENTER, Align.CENTER, Align.MIN))
     # agujeros de índice: uno cada PITCH_STEP en el rango; el pasador del cubo cuelga en -Z a 0°

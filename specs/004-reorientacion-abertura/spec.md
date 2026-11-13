@@ -47,6 +47,27 @@ Los tres ajustes juntos deciden dónde se cruzan los ejes. Con la misma separaci
 
 Configuración dibujada: **S225-A15-P40**, elegida para que los ejes se crucen a unos 40 cm, como pide el propósito. Los lentes quedan a 209.5 mm uno del otro y los ejes, a 42.3° de la vertical, se cruzan a 405 mm de los lentes. Todo esto está medido sobre el modelo (`salidas/concepto-abertura/datos.txt`).
 
+## Variante B: pórtico de pie, sin tocar la caja
+
+La misma barra, con el mismo pivote indexado y las mismas cámaras, montada sobre un **pórtico de perfil 2020 que apoya en la mesa**: dos patas de 540 mm por los costados de la caja y dos postes. La barra va entre los postes, 35 mm por delante de la abertura. **Nada toca la caja**: se puede mover la caja o la base completa por separado. El propósito lo permite, porque lo que no puede pasar es que una cámara se mueva respecto a la otra.
+
+Modelo 3D: `visor-pie.html`. Configuración dibujada: **S225-A15-P35**. Los ejes se cruzan en el suelo (z = 1 mm), a 405 mm de los lentes. Medido sobre el modelo, sin choques: las patas quedan a 7.5 mm de las paredes de la caja.
+
+![Pórtico de pie](renders/pie-1-frente.png)
+
+![Pórtico de pie, lateral](renders/pie-2-lateral.png)
+
+| | A: colgada del canto | B: pórtico de pie |
+| --- | --- | --- |
+| Sujeción | Pinza al canto del techo | Patas en la mesa; no toca la caja |
+| Depende de medir la caja | Sí: grosor y rigidez del canto | No |
+| Material extra | Ninguno | 4 perfiles 2020 (2 patas de 540 mm y 2 postes de 390 mm) y 4 escuadras |
+| Mover la caja | La barra se mueve con ella | Hay que mover las dos cosas, o alinearlas de nuevo |
+| Riesgo de rigidez | La pinza sobre un canto que quizá es blando | Los postes pueden oscilar; la barra une sus extremos y las dos cámaras siguen en la misma pieza |
+| Pivote | BE-PINZA-PIVOTE (mordaza) | BE-PIVOTE-POSTE: la misma placa con una oreja atornillada al poste con 2 M5 |
+
+Para dibujar otra configuración: `.venv\Scripts\python.exe -m concepto.pie.render` (≈ 20 s → `salidas/concepto-pie/`). Los parámetros están en `concepto/pie/params.py`.
+
 ## Piezas
 
 | Pieza | Estado |
