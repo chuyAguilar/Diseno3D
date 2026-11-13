@@ -24,7 +24,7 @@ Lo que falta. Prioridad **alta**: puede dar un resultado equivocado o impide ava
 - **Qué:** convertir `concepto/abertura/` en piezas fabricables: BE-PINZA-PIVOTE, BE-CUBO-PERFIL, perfil de 350 mm y regleta, con sus pruebas.
 - **Por qué queda:** el autor pidió solo los renders y la idea; lo desarrolla otra persona.
 - **De dónde:** spec 004 y ADR-002, 2026-11-12.
-- **Qué haría falta:** medir el canto de la abertura (grosor y si es rígido), resolver el espacio a las paredes (±199 frente a ±200 mm) y medir la rigidez del pivote con V1. Los cinco puntos están en `specs/004-reorientacion-abertura/spec.md`.
+- **Qué haría falta:** medir el canto de la abertura (grosor y si es rígido), resolver el espacio a las paredes (±199 frente a ±200 mm) y medir la rigidez del pivote con V1. También: carro v02 de 90 mm con los M5 en ±40, porque en la v01 la cuña tapa los M5 del carro; y largos de los M3 entre cuña y carro (solo 0° y 12.5° tienen largo estándar; propuesta: insertos térmicos y M3 × 12). Los cinco puntos están en `specs/004-reorientacion-abertura/spec.md`.
 - **Prioridad:** alta: la v01 no se puede montar en la caja real.
 
 ### B3 · FOV de 85°: ¿diagonal u horizontal?

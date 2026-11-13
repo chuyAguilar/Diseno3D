@@ -68,6 +68,23 @@ Modelo 3D: `visor-pie.html`. Configuración dibujada: **S225-A15-P35**. Los ejes
 
 Para dibujar otra configuración: `.venv\Scripts\python.exe -m concepto.pie.render` (≈ 20 s → `salidas/concepto-pie/`). Los parámetros están en `concepto/pie/params.py`.
 
+## Mecanismo de separación (regleta y carro v02)
+
+![Estación de cámara](renders/separacion-1-estacion.png)
+
+![Proceso para cambiar la separación](renders/separacion-2-proceso.png)
+
+![Tornillería](renders/separacion-3-tornillos.png)
+
+Para cambiar la separación: aflojar los 2 M5 del carro (unas 8 vueltas), bajar el carro 6.5 mm para que el diente salga de la muesca, deslizarlo hasta la muesca con el número deseado, subirlo (la V lo centra) y apretar. Se repite con la otra cámara en la muesca del mismo número y se recalibra el par estéreo. La cuña, la carcasa y la cámara no se desmontan.
+
+Medido sobre el modelo (`concepto/separacion/`, `python -m concepto.separacion.render`):
+
+- **Error de la v01:** la cuña tapa las cabezas de los 2 M5 del carro (entre 714 y 1039 mm³ de cuña bajo cada cabeza). Para aflojarlos habría que desmontar la cuña y la cámara. El **carro v02 mide 90 mm** y lleva los M5 en x = ±40 mm: es la menor separación con la que la llave Allen entra recta, sin tocar la cuña ni la carcasa, con las 7 cuñas. A S100 quedan 10 mm entre los dos carros.
+- Las cabezas de los M3 entre carro y cuña asoman 3 mm sobre el carro, en y = ±15. Por eso la regleta empieza 4 mm por encima de la cara inferior del perfil, y el brazo del diente va desplazado 14 mm hacia el centro de la barra. Las muescas quedan en ±(sep/2 − 14).
+- Sin choques de 100 a 300 mm, ni con el carro asentado ni con el carro bajado. Lo único que se solapa es el brazo con el carro, que son la misma pieza.
+- La regleta y el carro de los visores HTML siguen siendo los simplificados; estas imágenes tienen el detalle.
+
 ## Piezas
 
 | Pieza | Estado |
