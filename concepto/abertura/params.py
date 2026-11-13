@@ -6,17 +6,17 @@ vuelve a correr `python -m concepto.abertura.render`.
 """
 from cad.params import ANGLE_SET, BOX_RIM, BOX_SIZE, CLEARANCE_SLIDE, M5_D, PROFILE_SIZE  # noqa: F401
 
-# --- Configuración que se dibuja ---
-SEP = 250.0                       # marcas de los carros (entre centros de carro)
+# --- Configuración que se dibuja: ejes cruzados a ≈ 40 cm, como pide el autor ---
+SEP = 225.0                       # marcas de los carros (entre centros de carro)
 CONV = 15.0                       # cuña de convergencia por cámara (una de ANGLE_SET)
-PITCH = 45.0                      # inclinación hacia el fondo; 0 = cámaras en vertical
+PITCH = 40.0                      # inclinación hacia el fondo; 0 = cámaras en vertical
 
 # --- Rangos que el diseño admite ---
 SEP_RANGE = (100.0, 300.0)
 SEP_STEP = 25.0
 PITCH_RANGE = (0.0, 60.0)
 PITCH_STEP = 5.0                  # un agujero de índice cada 5°
-PITCH_COMPARE = (30.0, 45.0, 60.0)
+PITCH_COMPARE = (30.0, 40.0, 50.0)
 
 # --- Barra ---
 BAR_LEN = 350.0                   # cabe entre las paredes con el pivote y la pinza en cada extremo

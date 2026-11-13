@@ -41,9 +41,11 @@ def _glb(shape, name, color):
         return path.read_bytes()
 
 
-def write(parts, dest, title, notes=(), lines=(), points=()):
+def write(parts, dest, title, notes=(), lines=(), points=(), panel=True, subtitle="", share=None):
     """parts: [(nombre, grupo, color, shape)]; lines: [((x,y,z), (x,y,z), color)];
-    points: [((x,y,z), color, etiqueta)]. Todo en mm, marco del modelo (Z arriba)."""
+    points: [((x,y,z), color, etiqueta)]. Todo en mm, marco del modelo (Z arriba).
+    panel=False: solo el modelo a pantalla completa, con el título encima (para compartir).
+    share: ruta opcional de una copia sin <html>/<head>/<body> para publicarla como página."""
     data = []
     for name, group, color, shape in parts:
         bb = shape.bounding_box()
@@ -54,10 +56,18 @@ def write(parts, dest, title, notes=(), lines=(), points=()):
                "lines": [[list(a), list(b), c] for a, b, c in lines],
                "points": [[list(p), c, t] for p, c, t in points],
                "stamp": time.strftime("%Y-%m-%d %H:%M")}
-    page = TEMPLATE.replace("__TITLE__", html.escape(title)).replace(
-        "__DATA__", json.dumps(payload, ensure_ascii=False).replace("</", "<\\/"))
+    page = (TEMPLATE.replace("__TITLE__", html.escape(title)).replace("__SUBTITLE__", html.escape(subtitle))
+            .replace("__MODE__", "" if panel else "solo").replace("__ASIDE__", "" if panel else "hidden")
+            .replace("__NAME__", "hidden" if panel else "")
+            .replace("__DATA__", json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")))
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(page, encoding="utf-8")
+    if share:
+        body = page
+        for tag in ("<!doctype html>\n", '<html lang="es"><head>', "</head><body>", "</body></html>"):
+            body = body.replace(tag, "", 1)
+        Path(share).parent.mkdir(parents=True, exist_ok=True)
+        Path(share).write_text(body, encoding="utf-8")
     return dest
 
 
@@ -113,8 +123,10 @@ TEMPLATE = r"""<!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>__TITLE__</title>
 <style>
-:root{--bg:#F4F3EF;--panel:#FFFFFF;--ink:#15202A;--mute:#5B6670;--line:#D9D6CE;--acc:#B4361C}
-@media (prefers-color-scheme:dark){:root{--bg:#16191C;--panel:#1F2327;--ink:#E7E9EB;--mute:#9AA4AD;--line:#343A40;--acc:#F07A5A}}
+:root{--bg:#F4F3EF;--panel:#FFFFFF;--ink:#15202A;--mute:#5B6670;--line:#D9D6CE;--acc:#B4361C;--edge:#1A1F24}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#16191C;--panel:#1F2327;--ink:#E7E9EB;--mute:#9AA4AD;--line:#343A40;--acc:#F07A5A;--edge:#0B0D0F;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#16191C;--panel:#1F2327;--ink:#E7E9EB;--mute:#9AA4AD;--line:#343A40;--acc:#F07A5A;--edge:#0B0D0F;color-scheme:dark}
+[hidden]{display:none!important}
 *{box-sizing:border-box}html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font:13px/1.4 system-ui,Segoe UI,sans-serif}
 #app{display:grid;grid-template-columns:300px 1fr;height:100%}
 aside{background:var(--panel);border-right:1px solid var(--line);overflow:auto;padding:14px}
@@ -132,8 +144,12 @@ button.on{border-color:var(--acc);color:var(--acc)}
 #tip{position:absolute;pointer-events:none;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:2px 6px;display:none}
 input[type=range]{width:100%}
 @media (max-width:760px){#app{grid-template-columns:1fr;grid-template-rows:40% 60%}aside{border-right:0;border-bottom:1px solid var(--line)}}
-</style></head><body><div id="app">
-<aside>
+#app.solo{grid-template-columns:1fr;grid-template-rows:1fr}
+#name{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));pointer-events:none;display:flex;flex-direction:column;gap:2px}
+#name b{font-size:17px;letter-spacing:.01em;text-wrap:balance}#name span{color:var(--mute);font-variant-numeric:tabular-nums}
+#app.solo #hud{left:max(12px,env(safe-area-inset-left,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));color:var(--mute);font-size:12px;white-space:normal}
+</style></head><body><div id="app" class="__MODE__">
+<aside __ASIDE__>
 <h1 id="ttl"></h1><small id="stamp"></small>
 <h2>Datos del modelo</h2><ul class="notes" id="notes"></ul>
 <h2>Vista</h2>
@@ -146,7 +162,7 @@ input[type=range]{width:100%}
 <input type="range" id="cut" min="0" max="1000" value="500" disabled>
 <h2>Piezas</h2><div class="row"><button id="all">Todas</button></div><ul id="parts"></ul>
 </aside>
-<div id="view"><div id="hud">Arrastra para girar · rueda para acercar · botón derecho para mover · pasa el ratón sobre una pieza para ver su nombre</div><div id="tip"></div></div>
+<div id="view"><div id="name" __NAME__><b>__TITLE__</b><span>__SUBTITLE__</span></div><div id="hud">Arrastra para girar · rueda para acercar · botón derecho para mover · pasa el ratón sobre una pieza para ver su nombre</div><div id="tip"></div></div>
 </div>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 <script type="module">
@@ -163,8 +179,8 @@ const view = $('#view');
 const renderer = new THREE.WebGLRenderer({antialias: true});
 renderer.setPixelRatio(devicePixelRatio); renderer.localClippingEnabled = true;
 view.prepend(renderer.domElement);
-const dark = matchMedia('(prefers-color-scheme: dark)').matches;
-const scene = new THREE.Scene(); scene.background = new THREE.Color(dark ? 0x16191C : 0xF4F3EF);
+const css = getComputedStyle(document.documentElement), tok = n => css.getPropertyValue(n).trim();
+const scene = new THREE.Scene(); scene.background = new THREE.Color(tok('--bg') || '#F4F3EF');
 scene.add(new THREE.HemisphereLight(0xffffff, 0x666666, 1.6));
 const sun = new THREE.DirectionalLight(0xffffff, 1.6); sun.position.set(1, -2, 3); scene.add(sun);
 const world = new THREE.Group(); scene.add(world);   // marco del modelo: mm, Z arriba
@@ -175,7 +191,7 @@ const clip = new THREE.Plane(new THREE.Vector3(1, 0, 0), 0); let clipOn = false,
 
 const loader = new GLTFLoader(), entries = [];
 function b64(s) { const b = atob(s), u = new Uint8Array(b.length); for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return u.buffer; }
-const edgeMat = new THREE.LineBasicMaterial({color: dark ? 0x0B0D0F : 0x1A1F24, transparent: true, opacity: .55, clippingPlanes: [clip]});
+const edgeMat = new THREE.LineBasicMaterial({color: tok('--edge') || '#1A1F24', transparent: true, opacity: .55, clippingPlanes: [clip]});
 for (const p of D.parts) {
   const gltf = await loader.parseAsync(b64(p.glb), '');
   const g = gltf.scene; g.rotation.x = Math.PI / 2;     // glTF es Y arriba; el modelo, Z arriba

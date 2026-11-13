@@ -4,6 +4,8 @@
 
 ## Por qué
 
+**Propósito (del autor).** Sostener dos cámaras USB que miran juntas la misma zona de trabajo, a unos 40 cm. El sistema calcula posiciones en 3D a partir de las dos imágenes, y la precisión depende de que las dos cámaras no se muevan una respecto de la otra mientras se trabaja. Mover la base completa sí está permitido.
+
 La v01 se diseñó con dos supuestos falsos (`docs/CONTEXT.md`, D5 y E1):
 
 1. Las cámaras miraban **en vertical**, con la barra sobre el centro de la caja.
@@ -12,6 +14,8 @@ La v01 se diseñó con dos supuestos falsos (`docs/CONTEXT.md`, D5 y E1):
 La caja Puluz real (`camarasPosicion.jpeg`, `camarasPosicion2.jpeg`) está **cerrada por cinco lados**: el techo lleva el panel de luz y solo el frente está abierto. Las cámaras se cuelgan del **canto superior de la abertura** y miran **en diagonal**, de arriba al frente hacia abajo al fondo, donde están el tablero ChArUco y Marker0.
 
 ## La idea
+
+**Modelo 3D interactivo:** `visor.html` (en esta carpeta; se abre con doble clic).
 
 ![Vista desde el frente](renders/1-frente.png)
 
@@ -35,13 +39,13 @@ Los tres ajustes juntos deciden dónde se cruzan los ejes. Con la misma separaci
 
 ![Inclinaciones](renders/4-inclinaciones.png)
 
-| Inclinación | Dónde queda el cruce (S250, cuña 15°) |
+| Inclinación | Dónde queda el cruce (S225, cuña 15°) |
 | --- | --- |
-| 30° | 81 mm bajo el suelo: haría falta más cuña |
-| **45°** | **En el suelo, junto a la pared del fondo** (y = 186 mm, z = −1 mm): la diagonal de la foto |
-| 60° | Detrás de la pared del fondo: haría falta menos cuña |
+| 30° | 40 mm bajo el suelo: haría falta más cuña |
+| **40°** | **Sobre el suelo, hacia el fondo** (y = 124 mm, z = 5 mm), a 405 mm de los lentes |
+| 50° | 62 mm sobre el suelo, cerca de la pared del fondo |
 
-Configuración dibujada: **S250-A15-P45**. Los lentes quedan a 234.5 mm uno del otro y los ejes, a 46.9° de la vertical, se cruzan a 453 mm de los lentes. Todo esto está medido sobre el modelo (`salidas/concepto-abertura/datos.txt`).
+Configuración dibujada: **S225-A15-P40**, elegida para que los ejes se crucen a unos 40 cm, como pide el propósito. Los lentes quedan a 209.5 mm uno del otro y los ejes, a 42.3° de la vertical, se cruzan a 405 mm de los lentes. Todo esto está medido sobre el modelo (`salidas/concepto-abertura/datos.txt`).
 
 ## Piezas
 
@@ -69,7 +73,7 @@ Todos están en `concepto/abertura/params.py`; los que comparte con la v01 los l
 2. **El pivote es la junta crítica de rigidez (P6).** Tiene que cumplir V1 (giro relativo entre cámaras < 0.05°) y, además, que la barra no cabecee bajo carga. Como las dos cámaras están en el mismo perfil, un cabeceo no cambia la calibración entre ellas, pero sí la pose respecto a Marker0. Se mide igual que V1: pose de Marker0 antes y después de tocar la barra.
 3. **El espacio a las paredes es justo.** Con el perfil de 350 mm, la pinza llega a x = ±199 mm y las paredes están en ±200. Se gana espacio acortando el perfil o metiendo la placa por dentro del cubo.
 4. **El cruce depende de los tres ajustes.** Conviene una tabla (o que `datos.txt` lo diga) con qué cuña usar para cada separación e inclinación. Con la cuña máxima de 15°, separaciones grandes cruzan lejos.
-5. **Código de configuración.** El grabado pasa de `S150-A12.5` a algo como `S250-A15-P45`, con la inclinación incluida (P7; formato abierto en B5).
+5. **Código de configuración.** El grabado pasa de `S150-A12.5` a algo como `S225-A15-P40`, con la inclinación incluida (P7; formato abierto en B5).
 
 ## Criterio de cierre (para la meta que lo desarrolle)
 

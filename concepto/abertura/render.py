@@ -136,13 +136,15 @@ def main():
 
     color = {**COLORS, "caja": "#D9D6CE"}
     visor.write([(it.name, it.role, color[it.role], it.part) for it in items], OUT / "visor.html",
-                f"Concepto v02 — {code}",
+                "Barra estéreo v02",
                 notes=[f"Separación entre lentes: {lens_sep:.1f} mm", f"Cuña por cámara: {P.CONV:g}°",
                        f"Inclinación de la barra: {P.PITCH:g}° (índice cada {P.PITCH_STEP:g}°)",
                        f"Ejes cruzados a {along:.0f} mm de los lentes, en y = {cross.Y:.0f}, z = {cross.Z:.0f}"],
                 lines=[(tuple(p), tuple(p + u * _reach(p, u)), COLORS[f"cámara {i + 1}"])
                        for i, (p, u) in enumerate(axes)],
-                points=[(tuple(cross), "#B4361C", "cruce")])
+                points=[(tuple(cross), "#B4361C", "cruce")], panel=False,
+                subtitle=f"Concepto {code} · lentes a {lens_sep:.0f} mm · ejes cruzados a {along:.0f} mm",
+                share=OUT / "visor-pagina.html")
 
     lines = [f"Concepto v02 {code}", f"Lentes en {tuple(round(v, 1) for v in axes[0][0])} y "
              f"{tuple(round(v, 1) for v in axes[1][0])}; separación {lens_sep:.1f} mm",
